@@ -6,16 +6,16 @@
     <link href="css/normalize.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
   </head>
-  <body>
+  <body class="page-body page-body--green">
     <header class="page-header">
       <div class="page-header__inner">
         <div class="page-header__top">
-          <a class="page-header__logo">
+          <a class="page-header__logo" href="index.html">
             <img src="img/logo.svg" width="154" height="64" alt="Логотип Глейси">
           </a>
           <nav class="header-nav">
             <ul class="header-nav__list header-nav__list--main">
-              <li class="header-nav__item"><a class="header-nav__link header-nav__link--active">Каталог</a>
+              <li class="header-nav__item"><a class="header-nav__link header-nav__link--current" href="blank.html">Каталог</a>
                 <!-- <ul class="header-nav__submenu">
                   <li class="header-nav__item-submenu"><a class="header-nav__link-submenu header-nav__link-submenu--new" href="blank.html">Новинки</a></li>
                   <li class="header-nav__item-submenu"><a class="header-nav__link-submenu header-nav__link-submenu--active" href="blank.html">Сливочное</a></li>
@@ -29,8 +29,10 @@
             </ul>
             <ul class="header-nav__list header-nav__list--user">
               <li class="header-nav__item header-nav__item--user header-nav__item--search">
-                <button class="header-nav__search-btn" type="button">Поиск</button>
-                <form>
+                <button class="header-nav__search-btn" type="button" aria-label="Поиск">
+                  <svg width="17" height="17" viewBox="0 0 17 17"><path fill="#fff" d="M16.958 15.527L11.75 10.32A6.455 6.455 0 0 0 13 6.5 6.5 6.5 0 1 0 6.5 13a6.465 6.465 0 0 0 3.839-1.263l5.205 5.204 1.414-1.414zM6.5 11C4.019 11 2 8.981 2 6.5S4.019 2 6.5 2 11 4.019 11 6.5 8.981 11 6.5 11z"/></svg>
+                </button>
+                <form class="hidden">
                   <input class="header-nav__search-input" type="search" placeholder="крем-брюле">
                 </form>
               </li>
@@ -46,80 +48,89 @@
       </div>
     </header>
     <main>
-      <div class="wrap">
-        <h1 class="">Сливочное мороженое</h1>
+      <div class="main-page__wrap">
+        <h1 class="catalog__title">Сливочное мороженое</h1>
         <ol class="bredcrumbs">
-          <li><a href="index.html">Главная</a></li>
-          <li><a href="blank.html">Каталог</a></li>
-          <li><a>Сливочное</a></li>
+          <li class="bredcrumbs__item"><a class="bredcrumbs__link" href="index.html">Главная</a></li>
+          <li class="bredcrumbs__item"><a class="bredcrumbs__link" href="blank.html">Каталог</a></li>
+          <li class="bredcrumbs__item bredcrumbs__item-current"><a class="bredcrumbs__link">Сливочное</a></li>
         </ol>
         <section class="filtr">
           <h2 class="visually-hidden">Фильтр</h2>
-          <form action="https://echo.htmlacademy.ru" method="get">
+          <form class="filtr__form"action="https://echo.htmlacademy.ru" method="get">
             <fieldset class="filter__sorting">
-              <legend class="filter-price__title">Сортировка:</legend>
-              <select class="filter-price__select" name="sorting">
-                <option value="popularity">по популярности</option>
-                <option value="inexpensive-first">сначала недорогие</option>
-                <option value="first-dear">сначала дорогие</option>
-                <option value="fat">по жирности</option>
-              </select>
+              <legend class="filter__title filter-price__title">Сортировка:</legend>
+              <button class="filter-price__select" type="button">по популярности
+                <svg class="filter-price__select-svg" width="11" height="10" viewBox="0 0 11 10"><path fill="#ECF1EE" d="M5.5 10L0 0h11"/></svg>
+              </button>
+              <ul class="filter-price__list hidden">
+                <li class="filter-price__option"><a href="blank.index">по популярности</a></li>
+                <li class="filter-price__option"><a href="blank.index">сначала недорогие</a></li>
+                <li class="filter-price__option"><a href="blank.index">сначала дорогие</a></li>
+                <li class="filter-price__option"><a href="blank.index">по жирности</a></li>
+              </ul>
+              <!-- <select class="filter-price__select" name="sorting">
+                <option class="filter-price__option" value="popularity">по популярности</option>
+                <option class="filter-price__option" value="inexpensive-first">сначала недорогие</option>
+                <option class="filter-price__option" value="first-dear">сначала дорогие</option>
+                <option class="filter-price__option" value="fat">по жирности</option>
+              </select> -->
             </fieldset>
 
             <fieldset class="filter__price">
-              <legend class="filter-price__title">Цена: 100 ₽ – 500 ₽</legend>
+              <legend class="filter__title filter-price__title">Цена: 100 ₽ – 500 ₽</legend>
               <div class="filter-price__controls">
                 <div class="filter-price__scale">
                   <div class="filter-price__bar"></div>
                 </div>
-                <div class="filter-price__toggle filter-price__toggle--min"></div>
-                <div class="filter-price__toggle filter-price__toggle--max"></div>
+                <div class="filter-price__toggle filter-price__toggle--min" tabindex="0"></div>
+                <div class="filter-price__toggle filter-price__toggle--max" tabindex="0"></div>
               </div>
             </fieldset>
 
             <fieldset class="filter__fat">
-              <legend class="filter-fat__title">Жирность:</legend>
+              <legend class="filter__title filter-fat__title">Жирность:</legend>
               <ul class="filter-fat__list">
                 <li class="filter-fat__item">
-                  <input class="filter-fat__item-input" type="radio" name="fat" value="0%" id="fat-0">
+                  <input class="filter-fat__item-input visually-hidden" type="radio" name="fat" value="0%" id="fat-0">
                   <label class="filter-fat__item-label" for="fat-0">0%</label>
                 </li>
                 <li class="filter-fat__item">
-                  <input class="filter-fat__item-input" type="radio" name="fat" value="0%" id="fat-10" checked>
+                  <input class="filter-fat__item-input visually-hidden" type="radio" name="fat" value="0-10%" id="fat-10" checked>
                   <label class="filter-fat__item-label" for="fat-10">до 10%</label>
                 </li>
                 <li class="filter-fat__item">
-                  <input class="filter-fat__item-input" type="radio" name="fat" value="0%" id="fat-30">
+                  <input class="filter-fat__item-input visually-hidden" type="radio" name="fat" value="0-30%%" id="fat-30">
                   <label class="filter-fat__item-label" for="fat-30">до 30%</label>
                 </li>
                 <li class="filter-fat__item">
-                  <input class="filter-fat__item-input" type="radio" name="fat" value="0%" id="fat-more">
+                  <input class="filter-fat__item-input visually-hidden" type="radio" name="fat" value=">=30%" id="fat-more">
                   <label class="filter-fat__item-label" for="fat-more">выше 30%</label>
                 </li>
               </ul>
             </fieldset>
 
             <fieldset class="filter__filler">
-              <legend class="filter-filler__title">Наполнители:</legend>
+              <legend class="filter__title filter-filler__title">Наполнители:</legend>
               <ul class="filter-filler__list">
                 <li class="filter-filler__item">
-                  <input class="filter-filler__item-input" type="checkbox" name="chocolate" id="filtr-chocolate" checked>
+                  <input class="filter-filler__item-input visually-hidden" type="checkbox" name="chocolate" id="filtr-chocolate" checked>
                   <label class="filter-filler__item-label" for="filtr-chocolate">шоколадные</label>
                 </li>
                 <li class="filter-filler__item">
-                  <input class="filter-filler__item-input" type="checkbox" name="sugar" id="filtr-sugar" checked>
+                  <input class="filter-filler__item-input visually-hidden" type="checkbox" name="sugar" id="filtr-sugar" checked>
                   <label class="filter-filler__item-label" for="filtr-sugar">сахарные присыпки</label>
                 </li>
                 <li class="filter-filler__item">
-                  <input class="filter-filler__item-input" type="checkbox" name="fruits" id="filtr-fruits">
+                  <input class="filter-filler__item-input visually-hidden" type="checkbox" name="fruits" id="filtr-fruits">
                   <label class="filter-filler__item-label" for="filtr-fruits">фрукты</label>
                 </li>
                 <li class="filter-filler__item">
-                  <input class="filter-filler__item-input" type="checkbox" name="syrups" id="filtr-syrups">
+                  <input class="filter-filler__item-input visually-hidden" type="checkbox" name="syrups" id="filtr-syrups">
                   <label class="filter-filler__item-label" for="filtr-syrups">сиропы</label>
                 </li>
                 <li class="filter-filler__item">
-                  <input class="filter-filler__item-input" type="checkbox" name="jams" id="filtr-jams">
+                  <input class="filter-filler__item-input visually-hidden" type="checkbox" name="jams" id="filtr-jams">
                   <label class="filter-filler__item-label" for="filtr-jams">джемы</label>
                 </li>
               </ul>
@@ -128,7 +139,7 @@
           </form>
         </section>
         <section class="box-catalog">
-          <h2>Список мороженого</h2>
+          <h2 class="visually-hidden">Список мороженого</h2>
           <ul class="catalog">
             <li class="catalog__item">
               <article class="box-catalog__inner">
@@ -137,6 +148,7 @@
                 <div class="catalog-item__img">
                   <img src="img/ice-1.png" width="267" height="267" alt="Сливочное с апельсиновым джемом и цитрусовой стружкой">
                 </div>
+                <a class="catalog-item__button" href="blank.html">Быстрый просмотр</a>
               </article>
             </li>
             <li class="catalog__item">
@@ -146,6 +158,7 @@
                 <div class="catalog-item__img">
                   <img src="img/ice-2.png" width="267" height="267" alt="Сливочно-кофейное с кусочками шоколада">
                 </div>
+                <a class="catalog-item__button" href="blank.html">Быстрый просмотр</a>
               </article>
             </li>
             <li class="catalog__item">
@@ -155,6 +168,7 @@
                 <div class="catalog-item__img">
                   <img src="img/ice-3.png" width="267" height="267" alt="Сливочно-клубничное с присыпкой из белого шоколада">
                 </div>
+                <a class="catalog-item__button" href="blank.html">Быстрый просмотр</a>
               </article>
             </li>
             <li class="catalog__item">
@@ -164,6 +178,7 @@
                 <div class="catalog-item__img">
                   <img src="img/ice-4.png" width="267" height="267" alt="Сливочное крем-брюле с карамельной подливкой">
                 </div>
+                <a class="catalog-item__button" href="blank.html">Быстрый просмотр</a>
               </article>
             </li>
             <li class="catalog__item">
@@ -173,6 +188,7 @@
                 <div class="catalog-item__img">
                   <img src="img/ice-5.png" width="267" height="267" alt="Сливочное с брусничным джемом">
                 </div>
+                <a class="catalog-item__button" href="blank.html">Быстрый просмотр</a>
               </article>
             </li>
             <li class="catalog__item">
@@ -182,6 +198,7 @@
                 <div class="catalog-item__img">
                   <img src="img/ice-6.png" width="267" height="267" alt="Сливочно-черничное с цельными ягодами черники">
                 </div>
+                <a class="catalog-item__button" href="blank.html">Быстрый просмотр</a>
               </article>
             </li>
             <li class="catalog__item">
@@ -191,6 +208,7 @@
                 <div class="catalog-item__img">
                   <img src="img/ice-7.png" width="267" height="267" alt="Сливочно-лимонное с карамельной присыпкой">
                 </div>
+                <a class="catalog-item__button" href="blank.html">Быстрый просмотр</a>
               </article>
             </li>
             <li class="catalog__item">
@@ -200,6 +218,7 @@
                 <div class="catalog-item__img">
                   <img src="img/ice-8.png" width="267" height="267" alt="Сливочное с шоколадной стружкой">
                 </div>
+                <a class="catalog-item__button" href="blank.html">Быстрый просмотр</a>
               </article>
             </li>
             <li class="catalog__item">
@@ -209,6 +228,7 @@
                 <div class="catalog-item__img">
                   <img src="img/ice-9.png" width="267" height="267" alt="Сливочно-ванильное с кусочками шоколада">
                 </div>
+                <a class="catalog-item__button" href="blank.html">Быстрый просмотр</a>
               </article>
             </li>
             <li class="catalog__item">
@@ -218,6 +238,7 @@
                 <div class="catalog-item__img">
                   <img src="img/ice-10.png" width="267" height="267" alt="Сливочноe с ментоловым сиропом">
                 </div>
+                <a class="catalog-item__button" href="blank.html">Быстрый просмотр</a>
               </article>
             </li>
             <li class="catalog__item">
@@ -227,6 +248,7 @@
                 <div class="catalog-item__img">
                   <img src="img/ice-11.png" width="267" height="267" alt="Сливочное с кусочками черного шоколада">
                 </div>
+                <a class="catalog-item__button" href="blank.html">Быстрый просмотр</a>
               </article>
             </li>
             <li class="catalog__item">
@@ -236,35 +258,47 @@
                 <div class="catalog-item__img">
                   <img src="img/ice-12.png" width="267" height="267" alt="Сливочное с мятным сиропом">
                 </div>
+                <a class="catalog-item__button" href="blank.html">Быстрый просмотр</a>
               </article>
             </li>
           </ul>
         </section>
         <ul class="pagination-list">
-          <li class="pagination-item pagination-item-current"><a>1</a></li>
-          <li class="pagination-item"><a href="#">2</a></li>
-          <li class="pagination-item"><a href="#">3</a></li>
-          <li class="pagination-item"><a href="#">4</a></li>
-          <li class="pagination-item"><a href="#">5</a></li>
+          <li class="pagination-item pagination-item--current"><a class="pagination-item__link pagination-item__link--current">1</a></li>
+          <li class="pagination-item"><a class="pagination-item__link" href="#">2</a></li>
+          <li class="pagination-item"><a class="pagination-item__link" href="#">3</a></li>
+          <li class="pagination-item"><a class="pagination-item__link" href="#">4</a></li>
+          <li class="pagination-item"><a class="pagination-item__link" href="#">5</a></li>
         </ul>
       </div>
     </main>
     <footer class="footer">
       <div class="footer__inner">
         <ul class="footer__socials-list">
-          <li class="socials__item"><a href="blank.html">Фейсбук</a></li>
-          <li class="socials__item"><a href="blank.html">В</a></li>
-          <li class="socials__item"><a href="blank.html">Инстаграмм</a></li>
-          <li class="socials__item"><a href="blank.html">Твиттер</a></li>
+          <li class="socials__item"><a class="socials__link" href="blank.html">
+            <img src="img/fb.svg" width="32" height="32" alt="Фэйсбук">
+          </a></li>
+          <li class="socials__item"><a class="socials__link" href="blank.html">
+            <img src="img/vk.svg" width="32" height="32" alt="ВКонтакте">
+          </a></li>
+          <li class="socials__item"><a class="socials__link" href="blank.html">
+            <img src="img/instagram.svg" width="32" height="32" alt="Инстаграмм">
+          </a></li>
+          <li class="socials__item"><a class="socials__link" href="blank.html">
+            <img src="img/twitter.svg" width="32" height="32" alt="Твиттер">
+          </a></li>
         </ul>
         <ul class="footer__block-group">
-          <li class="footer__block-item"><a href="blank.html">Для поставщиков</a></li>
+          <li class="footer__block-item footer__block-item--favorites"><a href="blank.html">Для поставщиков</a></li>
           <li class="footer__block-item"><a href="blank.html">О производстве</a></li>
           <li class="footer__block-item"><a href="blank.html">Наши документы</a></li>
           <li class="footer__block-item"><a href="blank.html">Экологические стандарты</a></li>
         </ul>
         <div class="footer__copyright">
-          <p>Сделано в HTML Academy © 2019</p>
+          <a class="footer__logo-html" href="https://htmlacademy.ru" aria-label="HTML Academy">
+            <img src="img/logo-htmlacademy.svg" width="108" height="39" alt="HTML Academy">
+          </a>
+          <p class="footer__link-html">Сделано в <a href="https://htmlacademy.ru">HTML Academy</a> © 2019</p>
         </div>
       </div>
     </footer>
